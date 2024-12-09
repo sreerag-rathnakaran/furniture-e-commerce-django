@@ -1,0 +1,55 @@
+{% extends 'sellers.html' %}
+{% block content %}
+
+
+
+    <div class="row">
+    <div class="col-md-12">
+        <div class="card">  
+        <div class="card-header">
+            <div class="card-title">Update seller</div>
+        </div>
+        <form action="{% url 'update_sellerdetails' data.id %}" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="card-body">
+                <div class="row">
+                <div class="col-md-6 col-lg-4">
+                    
+                    <div class="form-group">
+                        <label for="text">Seller Name</label>
+                        <input type="text" class="form-control" placeholder="Name" name="uname" value="{{ data.user.username }}" >
+                    </div>
+                    <div class="form-group">
+                        <label for="textarea">Seller description</label>
+                        <textarea class="form-control" placeholder=" Description" name="sdescrp" value="" >{{ data.description  }}</textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Seller Password</label>
+                        <input type="password" class="form-control" placeholder="password" name="password" >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password">Seller Email</label>
+                        <input type="email" class="form-control" placeholder="email" name="semail" value="{{ data.email }}" >
+                    </div>
+                    
+                    
+                    <img src="{{ data.Logo.url }}" alt="">
+
+                    <div class="form-group">
+                    <input type="file" class="form-control-file" id="exampleFormControlFile1" name="simg"  >
+                    </div>
+
+           
+                <button class="btn btn-success" type="submit">UPDATE</button>
+                <button class="btn btn-danger" type="reset">Cancel</button>
+            
+        </form>
+            
+        </div>
+    </div>
+    </div>
+
+
+{% endblock %}

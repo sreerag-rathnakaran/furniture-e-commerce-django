@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{% block content %}
+
+    <div class="container1234" >
+        <!-- Profile Header -->
+        <div class="profile-header">
+            <h1>Edit Profile</h1>
+        </div>
+
+        <!-- Profile Edit Form -->
+        <div class="profile-form">
+            <h2>Update Your Information</h2>
+            <form action="{% url 'update_customerdetails' data.id %}" method="post">
+                <div class="form-group">
+                    <label for="Image">Profile Image:</label>
+                    <input type="file" id="image" name="image">
+                </div>
+
+                <div class="form-group">
+                    <label for="name">User Name:</label>
+                    <input type="text" id="name" name="uname" value="{{data.user.username}}" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="name">Full Name:</label>
+                    <input type="text" id="name" name="fname" value="{{data.Name}}" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="age">Age:</label>
+                    <input type="text" id="name" name="age" value="{{data.Age}}" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email Address:</label>
+                    <input type="email" id="email" name="email" value="{{data.Email}}" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">Phone Number:</label>
+                    <input type="text" id="phone" name="mob" value="+91-{{data.Phone}}" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">New password:</label>
+                    <input type="password" id="email" name="email"  required>
+                </div>
+
+               
+
+                <!-- Form Actions (Save and Cancel) -->
+                <div class="form-actions">
+                    <button type="submit" class="save-btn">Save Changes</button>
+                    <a href="profile.html" class="cancel-btn">Cancel</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+{% endblock %}

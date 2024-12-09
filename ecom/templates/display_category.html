@@ -1,0 +1,32 @@
+{% extends 'admin.html' %}
+{% block content %}
+    <table class="table table-hover table-stripped table-bordered" style="margin: auto;">
+      <thead class="table-dark">
+        <tr>
+          <th scope="col">Category Name</th>
+          <th scope="col">Category description</th>
+          <th scope="col">Image</th>
+          <th colspan="2" >Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for i in data %}
+        <tr class="table-light">
+            <td>{{i.name}}</td>
+            <td>{{i.description}}</td>
+            <td>
+              <img style="width: 165px;height: 165px" src="{{i.image.url}}">
+            </td>
+            <td>
+               <a href="{% url 'update_category' i.id %}">Update</a>
+            </td>
+            <td>
+              <a href="{% url 'delete_category' i.id %}">Delete</a>
+            </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    <br>
+    <br>
+{% endblock %}

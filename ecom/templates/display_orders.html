@@ -1,0 +1,44 @@
+{% extends 'admin.html' %}
+{% block content %}
+    <table class="table table-hover table-stripped table-bordered" style="margin: auto;">
+      <thead class="table-dark">
+        <tr>
+          <th scope="col">User Name</th>
+          <th scope="col">Shipping address</th>
+          <th scope="col">Products</th>
+          <th colspan="2">order Status</th>
+    
+        </tr>
+      </thead>
+      <tbody>
+        {% for i in data %}
+        <tr class="table-light">
+
+            <td>{{i.user.username}}</td>
+            <td>{{i.shipping_address}}</td>
+
+            <td>
+            {% for j in i.orderitem.all %}
+            {{j.product.name}},
+            {% endfor %}
+            </td> 
+            
+      
+            <td>
+
+  
+
+              <a href="{% url 'shipped' i.id %}">  Ship Item</a>
+
+  
+                  
+              
+           </td>
+      
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    <br>
+    <br>
+{% endblock %}

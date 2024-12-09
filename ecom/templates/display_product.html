@@ -1,0 +1,40 @@
+{% extends 'sellers.html' %}
+{% block content %}
+    <table class="table table-hover table-stripped table-bordered" style="margin: auto;">
+      <thead class="table-dark">
+        <tr>
+          <th scope="col">Product Name</th>
+          <th scope="col">Product description</th>
+          <th scope="col">Product price</th>
+          <th scope="col">Product stock</th>
+          <th scope="col">Is sale</th>
+          <th scope="col">Offer price</th>
+          <th scope="col">Image</th>
+          <th colspan="2" >Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for i in data %}
+        <tr class="table-light">
+            <td>{{i.name}}</td>
+            <td>{{i.description}}</td>
+            <td>{{i.price}}</td>
+            <td>{{i.stock }}</td>
+            <td>{{i.is_sale}}</td>
+            <td>{{i.sale_price}}</td>
+            <td>
+              <img style="width: 165px;height: 165px" src="{{i.image.url}}">
+            </td>
+            <td>
+               <a href="{% url 'update_product' i.id %}">Update</a>
+            </td>
+            <td>
+              <a href="{% url 'delete_product' i.id %}">Delete</a>
+            </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    <br>
+    <br>
+{% endblock %}

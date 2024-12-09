@@ -1,0 +1,34 @@
+{% extends 'sellers.html' %}
+{% block content %}
+    <table class="table table-hover table-stripped table-bordered" style="margin: auto;">
+      <thead class="table-dark">
+        <tr>
+          <th scope="col">Name</th>
+          <th scope="col">Description</th>
+          <th scope="col">Email</th>
+          <th scope="col">LOGO</th>
+          <th scope="col" colspan="2">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        
+        <tr class="table-light">
+            <td>{{data.user}}</td>
+            <td>{{data.description}}</td>
+            <td>{{data.email}}</td>
+            <td>
+              <img src="{{data.Logo.url}}" alt="" style="height: 165px; width: 100%;">
+            </td>
+            <td>
+                <a href="{% url 'update_seller' data.id %}" >Update</a>
+             </td>
+             <td>
+               <a href="">Delete</a>
+             </td>
+        </tr>
+       
+      </tbody>
+    </table>
+    <br>
+    <br>
+{% endblock %}

@@ -1,0 +1,40 @@
+{% extends 'admin.html' %}
+{% block content %}
+
+<h2 style="text-align: center;">Approved Sellers</h2><br><br>
+
+
+<table class="table table-hover table-stripped table-bordered" style="margin: auto;">
+    <thead class="table-dark">
+        <tr>
+            <th>Seller Username</th>
+            <th>Seller Name</th>
+            <th>Seller Email</th>
+            <th>Seller description</th>
+            <th>Seller Logo</th>
+            <th>Application date</th>
+            <th colspan="3" style="text-align: center;">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for i in data %}
+        <tr class="table-light">
+            <td>{{ i.username }}</td>
+            <td>{{ i.name }}</td>
+            <td>{{ i.email }}</td>
+            <td>{{ i.description}}</td>
+            <td>
+                <img src="{{i.Logo.url}}" alt="" style="height: 150px; width: 100%;">
+            </td>
+            <td>{{ i.application_date}}</td>
+            <td>
+                <a href="{% url 'display_products_basedonseller' i.id %}">View   Products</a>
+            </td>
+            <td>
+                <a href="">Delete Seller</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

@@ -1,0 +1,205 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+
+	
+		<!-- Start Hero Section -->
+			<div class="hero">
+				<div class="container">
+					<div class="row justify-content-between">
+						<div class="col-lg-5">
+							<div class="intro-excerpt">
+								<h1>Cart</h1>
+							</div>
+						</div>
+						<div class="col-lg-7">
+							
+						</div>
+					</div>
+				</div>
+			</div>
+		<!-- End Hero Section -->
+
+		
+
+		<div class="untree_co-section before-footer-section">
+            <div class="container">
+              <div class="row mb-5">
+                <form class="col-md-12" method="post">
+                  <div class="site-blocks-table">
+                    <table class="table">
+                      <thead>
+                        <tr>
+                          <th class="product-thumbnail">Image</th>
+                          <th class="product-name">Product</th>
+                          <th class="product-price">Price</th>
+                          <th class="product-quantity">Quantity</th>
+                          <th class="product-total">Total</th>
+                          <!-- <th class="product-save">Save</th> -->
+                          <th class="product-remove">Remove</th>
+                        </tr>,9e
+                      </thead>
+                      <tbody>
+                        
+                        {% for i in data %}
+                        <tr>
+                          <td class="product-thumbnail">
+                            <img src="{{i.product.image.url}}" alt="Image" class="img-fluid">
+                          </td> 
+                          <td class="product-name">
+                            <h2 class="h5 text-black">{{i.product.name}}</h2>
+                          </td>
+                          <td>$<span id="price">{{i.product.price}}</span></td>
+                          <td>
+                              <div class="input-group mb-3 d-flex align-items-center quantity-container" style="max-width: 120px; margin-left: 100px;">
+                                <div class="input-group-prepend">
+                                  <!-- <button class="btn btn-outline-black "  onclick="decreaseValue()" type="button">&minus;</button> -->
+                                  <a href="{% url 'decreasequantity' i.id %}" class="btn btn-outline-black">&minus;</a>
+                              
+                                </div>
+                                <input type="text" id="numberInput"  class="form-control text-center quantity-amount" value="{{i.quantity}}" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1" readonly>
+                                <div class="input-group-append">
+                                  <!-- <button class="btn btn-outline-black" onclick="increaseValue()" type="button">&plus;</button> -->
+                                  <a href="{% url 'increasequantity' i.id %}" class="btn btn-outline-black">&plus;</a>
+                                </div>
+                              </div>
+                              
+                            
+                          </td>
+                          <td>$<span id="total">{{i.totalprice}}</span></td>
+                          <td><a href="{% url 'remove_from_cart' i.id %}" class="btn btn-black btn-sm">X</a></td>
+
+                        </tr>
+                        {% endfor %}
+                          
+                      </tbody>
+                    </table>
+                  </div>
+                </form>
+              </div>
+        
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="row mb-5">
+                    <!-- <div class="col-md-6 mb-3 mb-md-0">
+                      <button class="btn btn-black btn-sm btn-block">Update Cart</button>
+                    </div>
+                    <div class="col-md-6">
+                      <button class="btn btn-outline-black btn-sm btn-block">Continue Shopping</button>
+                    </div> -->
+                  </div>
+                  <div class="row">
+                    <!-- <div class="col-md-12">
+                      <label class="text-black h4" for="coupon">Coupon</label>
+                      <p>Enter your coupon code if you have one.</p>
+                    </div>
+                    <div class="col-md-8 mb-3 mb-md-0">
+                      <input type="text" class="form-control py-3" id="coupon" placeholder="Coupon Code">
+                    </div>
+                    <div class="col-md-4">
+                      <button class="btn btn-black">Apply Coupon</button>
+                    </div> -->
+                  </div>
+                </div>
+
+
+                <div class="col-md-6 pl-5">
+                  <div class="row justify-content-end">
+                    <div class="col-md-7">
+                      <div class="row">
+                        <div class="col-md-12 text-right border-bottom mb-5">
+                          <h3 class="text-black h4 text-uppercase">Cart Totals</h3>
+                        </div>
+                      </div>
+
+                      {% for i in data %}
+                        
+                      <div class="row mb-3">
+                        <div class="col-md-6">
+                          <span class="text-black">{{i.product.name}}</span>
+                        </div>
+                        <div class="col-md-6 text-right">
+                          <strong class="text-black">{{i.product.price}} (for one piece)</strong>
+                        </div>
+                      </div>
+
+                      {% endfor %}
+
+                      <div class="row mb-3">
+                        <div class="col-md-6">
+                          <span class="text-black">Subtotal</span>
+                        </div>
+                        <div class="col-md-6 text-right">
+                          <strong class="text-black">${{total}}</strong>
+                        </div>
+                      </div>
+
+
+                      <div class="row mb-5">
+                        <div class="col-md-6">
+                          <span class="text-black">shipping</span>
+                        </div>
+                        <div class="col-md-6 text-right">
+                          <strong class="text-black">$50.00</strong>
+                        </div>
+                      </div>
+
+                      <div class="row mb-5">
+                        <div class="col-md-6">
+                          <span class="text-black">Total</span>
+                        </div>
+                        <div class="col-md-6 text-right">
+                          <strong class="text-black">{{Total}}</strong>
+                        </div>
+                      </div>
+        
+                      <div class="row">
+                        <div class="col-md-12">
+                          <a href="{% url 'Proceed_to_checkout_from_cart' %}" class="btn btn-black btn-lg py-3 btn-block" onclick="window.location='checkout.html'">Proceed To Checkout</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>                  
+          <script>
+
+            // function increaseValue(){
+            //   let input = document.getElementById('numberInput');
+              
+            //     input.value=parseInt(input.value) +1;
+            //     updateTotalPrice(id)
+             
+            // }
+
+            // function decreaseValue(){
+            //   let input = document.getElementById('numberInput');
+            //   if(input.value>1){
+            //     input.value=parseInt(input.value) -1;
+            //     updateTotalPrice()
+            //   }
+            // }
+
+            // let quantityinput=document.getElementById('numberInput');
+            // function updateTotalPrice(){
+            //   console.log(id)
+            //   let quantityinput=document.getElementById('numberInput');
+            //   let totalprice=parseInt (document.getElementById('price').innerText);
+            //   let total=document.getElementById('total')
+            //   let quantity=parseInt(quantityinput.value);
+            //   let totalPrice=totalprice * quantity ;
+
+            //   total.innerText = `${totalPrice}` ;
+            //   document.getElementById(`update-form-${id}`).submit();
+            // } 
+
+            // quantityinput.addEventListener('change', updateTotalPrice)
+
+
+          </script>
+		
+ {% endblock %}

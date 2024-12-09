@@ -1,0 +1,174 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block content %}
+	
+
+		<!-- Start Hero Section -->
+			<div class="hero">
+				<div class="container">
+					<div class="row justify-content-between">
+						<div class="col-lg-5">
+							<div class="intro-excerpt">
+								<h1>Shop</h1>
+							</div>
+						</div>
+						<div class="col-lg-7">
+							
+						</div>
+					</div>
+				</div>
+			</div>
+		<!-- End Hero Section -->
+
+		
+
+		<div class="untree_co-section product-section before-footer-section">
+		    <div class="container">
+		      	<div class="row">
+
+
+					
+					{% for i in data %}
+						
+					
+						
+
+		      		<!-- Start Column 1 -->
+					<div class="col-12 col-md-4 col-lg-3 mb-5">
+						<a class="product-item" href="{% url 'add_to_cart' i.id %}">
+							<img src=" {{i.image.url}} " class="img-fluid product-thumbnail">
+							<h3 class="product-title">{{i.name}}</h3>
+							<strong class="product-price">${{i.price}}</strong>
+
+							<span class="icon-cross">
+								
+									<!-- <img src=" {% static 'assets1/images/cross.svg' %} " class="img-fluid" style="height: 20px;"> -->
+									<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="white" class="bi bi-cart" viewBox="0 0 16 16" style="margin-top: 5px;">
+										<path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M3.102 4l1.313 7h8.17l1.313-7zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2"/>
+									</svg>
+									  
+							</span>
+						</a>
+					</div> 
+
+
+
+
+					{% endfor %}
+
+
+					<!-- End Column 1 -->
+						
+					<!-- Start Column 2 -->
+					<!-- <div class="col-12 col-md-4 col-lg-3 mb-5">
+						<a class="product-item" href="#">
+							<img src="images/product-1.png" class="img-fluid product-thumbnail">
+							<h3 class="product-title">Nordic Chair</h3>
+							<strong class="product-price">$50.00</strong>
+
+							<span class="icon-cross">
+								<img src=" {% static 'assets1/images/cross.svg' %} " class="img-fluid">
+							</span>
+						</a>
+					</div>  -->
+					<!-- End Column 2 -->
+
+					<!-- Start Column 3 -->
+					<!-- <div class="col-12 col-md-4 col-lg-3 mb-5">
+						<a class="product-item" href="#">
+							<img src="images/product-2.png" class="img-fluid product-thumbnail">
+							<h3 class="product-title">Kruzo Aero Chair</h3>
+							<strong class="product-price">$78.00</strong>
+
+							<span class="icon-cross">
+								<img src="images/cross.svg" class="img-fluid">
+							</span>
+						</a>
+					</div> -->
+					<!-- End Column 3 -->
+
+					<!-- Start Column 4 -->
+					<!-- <div class="col-12 col-md-4 col-lg-3 mb-5">
+						<a class="product-item" href="#">
+							<img src="images/product-3.png" class="img-fluid product-thumbnail">
+							<h3 class="product-title">Ergonomic Chair</h3>
+							<strong class="product-price">$43.00</strong>
+
+							<span class="icon-cross">
+								<img src="images/cross.svg" class="img-fluid">
+							</span>
+						</a>
+					</div> -->
+					<!-- End Column 4 -->
+
+
+					<!-- Start Column 1 -->
+					<!-- <div class="col-12 col-md-4 col-lg-3 mb-5">
+						<a class="product-item" href="#">
+							<img src="images/product-3.png" class="img-fluid product-thumbnail">
+							<h3 class="product-title">Nordic Chair</h3>
+							<strong class="product-price">$50.00</strong>
+
+							<span class="icon-cross">
+								<img src="images/cross.svg" class="img-fluid">
+							</span>
+						</a>
+					</div>  -->
+					<!-- End Column 1 -->
+						
+					<!-- Start Column 2 -->
+					<!-- <div class="col-12 col-md-4 col-lg-3 mb-5">
+						<a class="product-item" href="#">
+							<img src="images/product-1.png" class="img-fluid product-thumbnail">
+							<h3 class="product-title">Nordic Chair</h3>
+							<strong class="product-price">$50.00</strong>
+
+							<span class="icon-cross">
+								<img src="images/cross.svg" class="img-fluid">
+							</span>
+						</a>
+					</div>  -->
+					<!-- End Column 2 -->
+
+					<!-- Start Column 3 -->
+					<!-- <div class="col-12 col-md-4 col-lg-3 mb-5">
+						<a class="product-item" href="#">
+							<img src="images/product-2.png" class="img-fluid product-thumbnail">
+							<h3 class="product-title">Kruzo Aero Chair</h3>
+							<strong class="product-price">$78.00</strong>
+
+							<span class="icon-cross">
+								<img src="images/cross.svg" class="img-fluid">
+							</span>
+						</a>
+					</div> -->
+					<!-- End Column 3 -->
+
+					<!-- Start Column 4 -->
+					<!-- <div class="col-12 col-md-4 col-lg-3 mb-5">
+						<a class="product-item" href="#">
+							<img src="images/product-3.png" class="img-fluid product-thumbnail">
+							<h3 class="product-title">Ergonomic Chair</h3>
+							<strong class="product-price">$43.00</strong>
+
+							<span class="icon-cross">
+								<img src="images/cross.svg" class="img-fluid">
+							</span>
+						</a>
+					</div> -->
+					<!-- End Column 4 -->
+
+		      	</div>
+		    </div>
+		</div>
+		
+		<script>
+			let home = document.getElementById('home')
+			let shop = document.getElementById('shop')
+
+			home.classList.remove('active')
+			shop.classList.add('active')
+		</script>
+{% endblock %}

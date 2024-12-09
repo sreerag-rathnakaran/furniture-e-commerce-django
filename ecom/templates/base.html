@@ -1,0 +1,951 @@
+<!-- /*
+* Bootstrap 5
+* Template Name: Furni
+* Template Author: Untree.co
+* Template URI: https://untree.co/
+* License: https://creativecommons.org/licenses/by/3.0/
+*/ -->
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="author" content="Untree.co">
+  <link rel="shortcut icon" href="{% static 'assets1/favicon.png' %}">
+  <link rel="stylesheet" href="{% static 'assets2/style.css' %}">
+
+
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+  <!-- <link rel="stylesheet" href="{% static 'assets1/scss/style.scss' %}"> -->
+
+  <meta name="description" content="" />
+  <meta name="keywords" content="bootstrap, bootstrap4" />
+
+		<!-- Bootstrap CSS -->
+		<link href="{% static 'assets1/css/bootstrap.min.css' %}" rel="stylesheet">
+		<link href="{% static 'assets1/https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css' %}" rel="stylesheet">
+		<link href="{% static 'assets1/css/tiny-slider.css' %}" rel="stylesheet">
+		<link href="{% static 'assets1/css/style.css' %}" rel="stylesheet">
+		<title>Furni Free Bootstrap 5 Template for Furniture and Interior Design Websites by Untree.co </title>
+
+		<!-- assets2 -->
+
+		 <!-- bootstrap link -->
+		 <link rel="stylesheet" href="{% static 'assets2/https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css' %}" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+	 
+		 <!-- bootstrap link -->
+		 
+		 <!-- icons -->
+		 <link href="{% static 'assets2/https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' %}" rel='stylesheet'>
+		 <!-- icons -->
+
+		 <!-- assets3 -->
+		  <!-- Style Css Link -->
+		  <link rel="stylesheet" href="{% static 'assets3/style.css' %}">
+		  <!-- Style Css Link -->
+	  
+		  <!-- Font Awesome Cdn -->
+		  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+		  <!-- Font Awesome Cdn -->
+
+
+
+		  <!-- assets4 -->
+
+
+	</head>
+
+	<body>
+
+		<style>
+			*{
+				font-family: Poppins, 'Times New Roman', Times, serif ;
+				font-size: 15px;
+			}
+			.hidden1{
+				display: none;
+			}
+
+			.toast-box1{
+				position: absolute;
+				top: 60px;
+				right: 410px;
+				display: flex;
+				align-items: flex-end;
+				flex-direction: column;
+				/* overflow: hidden; */
+				padding: 20px;
+			}
+			.toast-box1 .toast{
+				position: relative;
+				width: 400px;
+				height: 80px;
+				background: #fff;
+				font-weight: 500;
+				margin: 15px 0;
+				box-shadow: 0 0 20px rgba(0, 0, 0,  0.3);
+				display: flex;
+				align-items: center;
+				border-radius: 6px;
+				transform: translateX(100%);
+				animation: moveleft ;
+			}
+			@keyframes moveleft{
+				100%{
+					transform: translateX(0);
+				}
+			}
+
+			.toast-box1 .toast.i{
+				margin: 0 20px;
+				font-size: 35px;
+				color: green;
+			}
+
+			.toast-box1 .toast.error i{
+				color: red;
+
+			}
+
+			.toast-box1 .toast.info i{
+				color:orange;
+
+			}
+
+			.toast-box1 .toast::after{
+				content: '';
+				position: absolute;
+				left: 0;
+				bottom: 0;
+				width: 100%;
+				height: 5px;
+				background: green;
+				animation: anim 6s linear forwards;
+
+			}
+
+			.toast-box1 .toast.error::after{
+				background: red;
+
+			}
+
+			.toast-box1 .toast.info::after{
+				background: red;
+
+			}
+			@keyframes anim{
+				100%{
+					width: 0;
+				}
+			}
+
+
+
+
+
+			/* body {
+				font-family: Arial, sans-serif;
+				margin: 0;
+				padding: 0;
+				background-color: #f4f4f4;
+			}
+
+			.container123{
+				width: 60%;
+				margin: 50px auto;
+				background-color: white;
+				padding: 20px;
+				border-radius: 8px;
+				box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+			}
+
+			.profile-header {
+				text-align: center;
+				padding: 20px;
+				background-color: #3b5d50;
+				color: white;
+				border-radius: 8px 8px 0 0;
+			}
+
+			.profile-header h1 {
+				margin: 0;
+			}
+
+			.profile-details {
+				padding: 20px;
+			}
+
+			h2 {
+				color: #1bcd68;
+				border-bottom: 2px solid #ff6600;
+				padding-bottom: 10px;
+				margin-bottom: 20px;
+			}
+
+			p {
+				font-size: 16px;
+				line-height: 1.6;
+				color: #555;
+			}
+
+			.edit-btn {
+				display: inline-block;
+				margin-top: 20px;
+				padding: 10px 20px;
+				background-color: #bedd11f1;
+				color: white;
+				text-decoration: none;
+				border-radius: 5px;
+				transition: background-color 0.3s;
+			}
+
+			.edit-btn:hover {
+				background-color: #e65c00;
+			} */
+
+
+
+			body {
+				background: rgb(99, 39, 120)
+			}
+
+			.form-control:focus {
+				box-shadow: none;
+				border-color: #BA68C8
+			}
+
+			.profile-button {
+				background: rgb(99, 39, 120);
+				box-shadow: none;
+				border: none
+			}
+
+			.profile-button:hover {
+				background: #682773
+			}
+
+			.profile-button:focus {
+				background: #682773;
+				box-shadow: none
+			}
+
+			.profile-button:active {
+				background: #682773;
+				box-shadow: none
+			}
+
+			.back:hover {
+				color: #682773;
+				cursor: pointer
+			}
+
+			.labels {
+				font-size: 11px
+			}
+
+			.add-experience:hover {
+				background: #BA68C8;
+				color: #fff;
+				cursor: pointer;
+				border: solid 1px #BA68C8
+			}
+
+
+
+			body {
+				font-family: Arial, sans-serif;
+				margin: 0;
+				padding: 0;
+				background-color: #f4f4f4;
+			}
+
+			.container1234 {
+				width: 60%;
+				margin: 50px auto;
+				background-color: rgb(255, 255, 255);
+				padding: 20px;
+				border-radius: 8px;
+				box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+			}
+
+			.profile-header {
+				text-align: center;
+				padding: 20px;
+				background-color: #3b5d50;
+				color: white;
+				border-radius: 8px 8px 0 0;
+			}
+
+			.profile-header h1 {
+				margin: 0;
+			}
+
+			.profile-form {
+				padding: 20px;
+			}
+
+			h2 {
+				color: #333;
+				border-bottom: 2px solid #ff6600;
+				padding-bottom: 10px;
+				margin-bottom: 20px;
+			}
+
+			label {
+				display: block;
+				margin: 15px 0 5px;
+				font-weight: bold;
+				color: #555;
+			}
+
+			input[type="text"], input[type="email"], input[type="tel"], textarea {
+				width: 100%;
+				padding: 10px;
+				border: 1px solid #ddd;
+				border-radius: 5px;
+				font-size: 16px;
+			}
+
+			textarea {
+				resize: vertical;
+			}
+
+			.form-group {
+				margin-bottom: 20px;
+			}
+
+			.form-actions {
+				text-align: center;
+			}
+
+			.save-btn, .cancel-btn {
+				padding: 10px 20px;
+				background-color: #ff6600;
+				color: white;
+				border: none;
+				border-radius: 5px;
+				font-size: 16px;
+				cursor: pointer;
+				transition: background-color 0.3s;
+				margin-right: 10px;
+			}
+
+			.cancel-btn {
+				background-color: #ccc;
+			}
+
+			.save-btn:hover {
+				background-color: #e65c00;
+			}
+
+			.cancel-btn:hover {
+				background-color: #bbb;
+			}
+            
+			
+
+
+
+
+
+
+
+				/* Basic Styling */
+			body, html {
+				font-family: Arial, sans-serif;
+				margin: 0;
+				padding: 0;
+			}
+
+			.product-page {
+				display: flex;
+				max-width: 1200px;
+				/* margin: 50px auto; */
+				padding: 20px;
+			}
+
+			/* Image Section */
+			.image-section {
+				flex: 2;
+				display: flex;
+				flex-direction: column;
+			}
+
+			.main-image-container {
+				width: 100%;
+				cursor: pointer;
+			}
+
+			.main-image-container img {
+				width: 100%;
+				border-radius: 8px;
+				transition: transform 0.3s ease;
+			}
+
+			.thumbnail-gallery {
+				display: flex;
+				gap: 10px;
+				margin-top: 10px;
+			}
+
+			.thumbnail-gallery img {
+				width: 80px;
+				cursor: pointer;
+				border-radius: 5px;
+				transition: border 0.3s;
+			}
+
+			.thumbnail-gallery img:hover {
+				border: 2px solid #333;
+			}
+
+			/* Lightbox Modal */
+			.lightbox-modal {
+				display: none;
+				position: fixed;
+				z-index: 10;
+				padding-top: 100px;
+				left: 0;
+				top: 0;
+				width: 100%;
+				height: 100%;
+				background-color: rgba(0,0,0,0.9);
+			}
+
+			.lightbox-content {
+				margin: auto;
+				display: block;
+				width: 80%;
+			}
+
+			.close-lightbox {
+				position: absolute;
+				top: 10px;
+				right: 20px;
+				font-size: 30px;
+				color: white;
+				cursor: pointer;
+			}
+
+			/* Sidebar */
+			.product-info-sidebar {
+				flex: 1;
+				padding: 20px;
+				background: #fff;
+				border-radius: 8px;
+				position: sticky;
+				top: 20px;
+			}
+
+			.price {
+				font-size: 24px;
+				color: #b12704;
+				margin-bottom: 10px;
+			}
+
+			.discount {
+				font-size: 18px;
+				color: #777;
+				text-decoration: line-through;
+			}
+
+			.btn-add-to-cart {
+				/* width: 120px;
+				padding: 15px;
+				margin-top: 15px;
+				border-radius: 8px; */
+				cursor: pointer;
+				font-size: 16px;
+				transition: background-color 0.3s;
+			}
+
+			.btn-buy-now {
+				/* width: 120px;
+				padding: 15px;
+				margin-top: 15px;
+				border-radius: 8px; */
+				cursor: pointer;
+				font-size: 16px;
+				transition: background-color 0.3s;
+			}
+
+
+
+
+			.btn-add-to-cart {
+				background: #1a7764;
+				color: #fff;
+			}
+
+			.btn-buy-now {
+				background: #048dac;
+				color: #fff;
+			}
+
+			/* Tab Buttons */
+			.tab-buttons {
+				display: flex;
+				gap: 20px;
+				border-bottom: 2px solid #ddd;
+			}
+
+			.tab-buttons button {
+				padding: 10px 15px;
+				cursor: pointer;
+				font-size: 16px;
+				background: none;
+				border: none;
+			}
+
+			.tab-buttons button.active {
+				border-bottom: 2px solid #333;
+			}
+
+			.tab-content {
+				padding: 20px 0;
+				display: none;
+			}
+
+			.tab-content.active {
+				display: block;
+			}
+
+
+
+
+			/* Basic Styling */
+			body {
+				font-family: Arial, sans-serif;
+			}
+
+			/* Sidebar and Product Options */
+			.product-info-sidebar {
+				padding: 20px;
+				background: #fff;
+				border-radius: 8px;
+			}
+
+			.price {
+				font-size: 24px;
+				color: #b12704;
+				margin-bottom: 12px;
+			}
+
+			.discount {
+				font-size: 18px;
+				color: #777;
+				text-decoration: line-through;
+			}
+
+			/* Color Selector Styling */
+			.color-selection {
+				margin-top: 20px;
+			}
+
+			.color-options {
+				display: flex;
+				gap: 10px;
+			}
+
+			.color-icon {
+				width: 30px;
+				height: 30px;
+				border-radius: 50%;
+				cursor: pointer;
+				border: 2px solid transparent;
+				transition: border 0.3s;
+			}
+
+			.color-icon.selected {
+				border: 2px solid #333;
+			}
+
+			#selected-color {
+				margin-top: 10px;
+				font-size: 14px;
+				color: #333;
+			}
+			.product-details{
+				padding: 15px, 30px;
+			}
+			.action-button{
+				width: 100%;
+				display: flex;
+				align-items: center;
+				gap: 10px;
+				padding: 10px 10px;
+			}
+
+			.searh-item{
+				display: flex;
+				align-items: center;
+				gap: 10px;
+			}
+			.searh-item input{
+				flex: 1;
+			}
+
+
+
+			/* search */
+			.search-container{
+				display: none;
+				align-items: center;
+				gap: 10px;
+				padding: 10px 95px;
+				background-color: #3b5d50;
+			}
+			.search-container .search{
+				flex: 1;
+			}
+			.search-container .search input{
+				outline: none;
+				border-radius: 50px;
+				
+			}
+			
+
+
+	
+
+			@media(max-width:780px){
+				.product-page{
+					flex-direction: column;
+				}
+				.search-container{
+					padding: 10px 15px;
+				}
+			}
+
+		</style>
+
+		<!-- Start Header/Navigation -->
+		 
+
+		<nav class="custom-navbar navbar navbar navbar-expand-md navbar-dark bg-dark" arial-label="Furni navigation bar">
+			
+			
+				<a class="nav-link" href="{% url 'userprofile' %}">
+				<img class="rounded-circle" style="width: 30px;"  src="{{user.customer.Image.url}}">
+				</a>
+			
+			
+
+			<div class="container " style="padding-left: -10px;">
+
+				<a class="navbar-brand" href="">Furni<span>.</span></a>
+
+			<!-- <form action="{% url 'search' %}" class="searh-item">
+				<input type="text" placeholder="Search.."  name="q"> 
+				<button ><i class="fa fa-search" ></i></button>
+			</form> -->
+
+				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsFurni" aria-controls="navbarsFurni" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+
+				<div class="collapse navbar-collapse" id="navbarsFurni">
+					<ul class="custom-navbar-nav navbar-nav ms-auto mb-2 mb-md-0">
+						<li class="nav-item" id="home">
+							<a class="nav-link" href="{% url 'index' %}">Home</a>
+						</li>
+						
+						<li id="shop"><a class="nav-link"  href="{% url 'shop' %}">Shop</a></li>
+						<li id="about"><a class="nav-link"  href="about.html">About us</a></li>
+						<li id="order"><a class="nav-link"  href="{% url 'order' %}">Order</a></li>
+						<li id="blog"><a class="nav-link"  href="{% url 'blog' %}">Reviews</a></li>
+						<!-- <li id="contact"><a class="nav-link"  href="contact.html">Contact us</a></li> -->
+					</ul>
+
+					<ul class="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5">
+						<li><a class="nav-link" href="{% url 'register_customer' %}"><img src=" {% static 'assets1/images/user.svg' %} "></a></li>
+						<li><a class="nav-link" href="{% url 'cart' %}"><img src="{% static 'assets1/images/cart.svg' %}"></a></li>
+						
+						<li><i onclick="changeSearch()" class="fa fa-search" style="display: flex;margin-left: 30px;margin-top: 15px;color: white;width: 65px;height: 30px;" ></i></li>
+						
+					</ul>
+				</div>
+			</div>
+				
+			
+		</nav>
+
+	<form class="search-container " id="search" action="{% url 'search' %}" method="get">
+		<div class="search">
+		
+			<input type="text" name="q" placeholder="Search Here.......">
+		</div>
+		<button class="btn btn-secondary me-2">Search</button>
+	</form>
+	
+		<!-- End Header/Navigation -->
+
+        
+        {% block content %}
+            
+        {% endblock %}
+            
+
+
+        <!-- Start Footer Section -->
+		<footer class="footer-section">
+			<div class="container relative">
+
+				<!-- <div class="sofa-img">
+					<img src="images/sofa.png" alt="Image" class="img-fluid">
+				</div> -->
+
+				<div class="row">
+					<div class="col-lg-8">
+						<div class="subscription-form">
+							<!-- <h3 class="d-flex align-items-center"><span class="me-1"><img src="" alt="Image" class="img-fluid"></span><span>Subscribe to Newsletter</span></h3> -->
+<!-- 
+							<form action="#" class="row g-3">
+								<div class="col-auto">
+									<input type="text" class="form-control" placeholder="Enter your name">
+								</div>
+								<div class="col-auto">
+									<input type="email" class="form-control" placeholder="Enter your email">
+								</div>
+								<div class="col-auto">
+									<button class="btn btn-primary">
+										<span class="fa fa-paper-plane"></span>
+									</button>
+								</div>
+							</form> -->
+
+						</div>
+					</div>
+				</div>
+
+				<div class="row g-5 mb-5">
+					<div class="col-lg-4">
+						<div class="mb-4 footer-logo-wrap"><a href="#" class="footer-logo">Furni<span>.</span></a></div>
+						<p class="mb-4">Donec facilisis quam ut purus rutrum lobortis. Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate velit imperdiet dolor tempor tristique. Pellentesque habitant</p>
+
+						<ul class="list-unstyled custom-social">
+							<li><a href="#"><span class="fa fa-brands fa-facebook-f"></span></a></li>
+							<li><a href="#"><span class="fa fa-brands fa-twitter"></span></a></li>
+							<li><a href="#"><span class="fa fa-brands fa-instagram"></span></a></li>
+							<li><a href="#"><span class="fa fa-brands fa-linkedin"></span></a></li>
+						</ul>
+					</div>
+
+					<div class="col-lg-8">
+						<div class="row links-wrap">
+							<div class="col-6 col-sm-6 col-md-3">
+								<ul class="list-unstyled">
+									<li><a href="#">About us</a></li>
+									<li><a href="#">Services</a></li>
+									<li><a href="#">Blog</a></li>
+									<li><a href="#">Contact us</a></li>
+								</ul>
+							</div>
+
+							<div class="col-6 col-sm-6 col-md-3">
+								<ul class="list-unstyled">
+									<li><a href="#">Support</a></li>
+									<li><a href="#">Knowledge base</a></li>
+									<li><a href="#">Live chat</a></li>
+								</ul>
+							</div>
+
+							<div class="col-6 col-sm-6 col-md-3">
+								<ul class="list-unstyled">
+									<li><a href="#">Jobs</a></li>
+									<li><a href="#">Our team</a></li>
+									<li><a href="#">Leadership</a></li>
+									<li><a href="#">Privacy Policy</a></li>
+								</ul>
+							</div>
+
+							<div class="col-6 col-sm-6 col-md-3">
+								<ul class="list-unstyled">
+									<li><a href="#">Nordic Chair</a></li>
+									<li><a href="#">Kruzo Aero</a></li>
+									<li><a href="#">Ergonomic Chair</a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+
+				</div>
+
+				<div class="border-top copyright">
+					<div class="row pt-4">
+						<div class="col-lg-6">
+							<p class="mb-2 text-center text-lg-start">Copyright &copy;<script>document.write(new Date().getFullYear());</script>. All Rights Reserved. &mdash; Designed with love by <a href="https://untree.co">Untree.co</a> <!-- License information: https://untree.co/license/ -->
+            </p>
+						</div>
+
+						<div class="col-lg-6 text-center text-lg-end">
+							<ul class="list-unstyled d-inline-flex ms-auto">
+								<li class="me-4"><a href="#">Terms &amp; Conditions</a></li>
+								<li><a href="#">Privacy Policy</a></li>
+							</ul>
+						</div>
+
+					</div>
+				</div>
+
+			</div>
+
+			
+		</footer>
+		<!-- End Footer Section -->	
+
+
+
+		
+		
+		{% if messages %}
+		<div class="toast-box1">
+			
+			
+			{% for message in messages %}
+				
+			<div class="toast {{message.tags}}" id="notification" style="display: flex; gap: 10px; align-items: center;padding: 0 10px;">
+				{% if message.tags == 'success' %}
+				<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="green" class="bi bi-check-circle-fill" viewBox="0 0 16 16">
+					<path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+				  </svg>
+				{{message}}
+				{% elif message.tags == 'error' %}
+				<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="red" class="bi bi-x-circle-fill" viewBox="0 0 16 16">
+					<path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293z"/>
+				  </svg>
+				  {{ message }}
+				{% endif %}
+				
+			</div>
+			{% endfor %}
+				
+			
+			
+			<!-- <div class="toast success" id="notification">
+				<i class="bx bx-info-circle"></i>
+				success
+			</div> -->
+			<script>
+				let notification=document.getElementById('notification')
+				setTimeout(()=>{
+					notification.style.display = 'none'
+				},6000)
+			</script>
+			
+		</div>
+		{% endif %}
+			
+
+			
+		
+
+
+		<script>
+			// Set Main Image in Gallery
+			function setMainImage(src) {
+				document.getElementById('main-image').src = src;
+			}
+
+			// Open Lightbox Modal
+			const mainImage = document.getElementById('main-image');
+			mainImage.addEventListener('click', () => {
+				const lightboxModal = document.getElementById('lightbox-modal');
+				const lightboxImage = document.getElementById('lightbox-image');
+				lightboxImage.src = mainImage.src;
+				lightboxModal.style.display = 'block';
+			});
+
+			// Close Lightbox Modal
+			document.querySelector('.close-lightbox').addEventListener('click', () => {
+				document.getElementById('lightbox-modal').style.display = 'none';
+			});
+
+			// Switch Tabs
+			function showTab(tabName) {
+				document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
+				document.getElementById(tabName).classList.add('active');
+				document.querySelectorAll('.tab-buttons button').forEach(btn => btn.classList.remove('active'));
+				event.currentTarget.classList.add('active');
+			}
+
+			function selectColor(color) {
+				document.getElementById('selected-color').textContent = `Selected Color: ${color}`;
+				document.querySelectorAll('.color-icon').forEach(icon => icon.classList.remove('selected'));
+
+				const selectedIcon = document.querySelector(`.color-icon[data-color="${color}"]`);
+				if (selectedIcon) {
+					selectedIcon.classList.add('selected');
+				}
+			}
+
+
+			
+			function changeSearch(){
+				const search = document.getElementById('search')
+				
+				if(search.style.display === 'flex'){
+					search.style.display = 'none'
+					return
+				}
+
+				search.style.display = 'flex'
+			}
+
+
+
+
+
+
+	
+
+
+			
+
+		</script>
+
+		<script src="script.js"></script>
+		
+
+
+		
+			
+
+
+		
+		
+	
+
+
+		<script src="{% static 'assets1/js/bootstrap.bundle.min.js' %}"></script>
+		<script src="{% static 'assets1/js/tiny-slider.js' %}"></script>
+		<script src="{% static 'assets1/js/custom.js' %}"></script>
+
+
+		<!-- assets2 -->
+
+		<script src="{% static 'assets2/https://code.jquery.com/jquery-3.2.1.slim.min.js' %}" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+		<script src="{% static 'assets2/https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js' %}" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+		<script src="{% static 'assets2/https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js' %}" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+
+
+
+		<!-- assets4 -->
+		
+
+	</body>
+
+</html>
+
+
+
+
+
+
+

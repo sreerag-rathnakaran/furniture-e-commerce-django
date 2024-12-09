@@ -1,0 +1,87 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+
+    <!-- <div class="container123" style="width: 500px;">
+        Profile Header
+        <!\-- <div class="profile-header">
+            <h1>User Profile</h1>
+            <h2>{{data.user.username}}</h2>
+            <h2>{{data.Email}}</h2>
+
+            <img src="{{data.Image.url}}" alt="" style="width: 350px;">
+        </div> -->
+
+        <!-- Personal Details Section -->
+        <!-- <div class="profile-details">
+            <h2>Personal Information</h2>
+            <p><strong>Name:</strong>{{data.Name}}</p>
+            <p><strong>Email:</strong>{{data.Email}}</p>
+            <p><strong>Phone:</strong>+91 {{data.Phone}}</p>
+            <p><strong>Age:</strong>{{data.Age}}</p>
+            <a href="{% url 'update_customer' data.id %}" class="edit-btn">Edit Profile</a>
+            <a href="" class="edit-btn">Delete Profile</a>
+            <a href="{% url 'LogoutCustomer' %}" class="edit-btn">Logout</a>
+        </div>
+    </div> --> 
+
+
+
+
+
+    <div class="container rounded bg-white mt-5 mb-5">
+        <div class="row">
+            <div class="col-md-3 border-right">
+                <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5" width="150px" src="{{data.Image.url}}"><span class="font-weight-bold"><strong>{{data.user.username}}</strong></span><span class="text-black-50"></span><span><strong>{{data.Email}}</strong></span></div>
+            </div>
+            <div class="col-md-5 border-right">
+                <div class="p-3 py-5">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <h4 class="text-right">User Profile</h4>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col-md-6"><label class="labels">User Name</label><input type="text" class="form-control" placeholder="first name" value="{{data.user.username}}"></div>
+                        <div class="col-md-6"><label class="labels">Name</label><input type="text" class="form-control" value="{{data.Name}}" placeholder="surname"></div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-md-12"><label class="labels">Age</label><input type="text" class="form-control" placeholder="enter phone number" value="{{data.Age}}"></div>
+                        <div class="col-md-12"><label class="labels">Email ID</label><input type="text" class="form-control" placeholder="enter email id" value="{{data.Email}}"></div>
+                        <div class="col-md-12"><label class="labels">Mobile Number</label><input type="text" class="form-control" placeholder="enter phone number" value="+91-{{data.Phone}}"></div>
+                        <!-- <div class="col-md-12"><label class="labels">Address Line 1</label><input type="text" class="form-control" placeholder="enter address line 1" value=""></div>
+                        <div class="col-md-12"><label class="labels">Address Line 2</label><input type="text" class="form-control" placeholder="enter address line 2" value=""></div>
+                        <div class="col-md-12"><label class="labels">Postcode</label><input type="text" class="form-control" placeholder="enter address line 2" value=""></div> -->
+                        <!-- <div class="col-md-12"><label class="labels">State</label><input type="text" class="form-control" placeholder="enter address line 2" value=""></div> -->
+                        <!-- <div class="col-md-12"><label class="labels">Area</label><input type="text" class="form-control" placeholder="enter address line 2" value=""></div> -->
+                        
+                        <!-- <div class="col-md-12"><label class="labels">Education</label><input type="text" class="form-control" placeholder="education" value=""></div> -->
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-md-6"><label class="labels">Country</label><input type="text" class="form-control" placeholder="country" value="India" readonly></div>
+                        <div class="col-md-6"><label class="labels">State</label><input type="text" class="form-control" value="Kerala" placeholder="state" readonly></div>
+                    </div>
+                    <div class="mt-5 text-center">
+                        
+                        <a href="{% url 'update_customer' data.id %}" class="btn btn-primary profile-button">Edit Profile</a>
+                        <a href="" class="btn btn-primary profile-button">Delete Profile</a>
+                        <a href="{% url 'LogoutCustomer' %}" class="btn btn-primary profile-button">Logout</a>
+                        
+                    </div>
+
+                </div>
+            </div>
+            <!-- <div class="col-md-4">
+                <div class="p-3 py-5">
+                    <div class="d-flex justify-content-between align-items-center experience"><span>Edit Experience</span><span class="border px-3 p-1 add-experience"><i class="fa fa-plus"></i>&nbsp;Experience</span></div><br>
+                    <div class="col-md-12"><label class="labels">Experience in Designing</label><input type="text" class="form-control" placeholder="experience" value=""></div> <br>
+                    <div class="col-md-12"><label class="labels">Additional Details</label><input type="text" class="form-control" placeholder="additional details" value=""></div>
+                </div>
+            </div> -->
+        </div>
+    </div>
+    </div>
+    </div>
+
+
+{% endblock %}

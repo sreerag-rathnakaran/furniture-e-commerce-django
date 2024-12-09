@@ -1,0 +1,230 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block content %}
+
+
+		<!-- Start Hero Section -->
+		<div class="hero">
+			<div class="container">
+				<div class="row justify-content-between">
+					<div class="col-lg-5">
+						<div class="intro-excerpt">
+							<h1>Order</h1>
+						</div>
+					</div>
+					<div class="col-lg-7">
+						
+					</div>
+				</div>
+			</div>
+		</div>
+	<!-- End Hero Section -->
+
+	
+
+	<div class="untree_co-section before-footer-section">
+		<div class="container">
+		  <div class="row mb-5">
+			<form class="col-md-12" method="post">
+			  <div class="site-blocks-table">
+				<table class="table">
+				  <thead>
+					<tr>
+					  <th class="product-thumbnail">Image</th>
+					  <th class="product-name">Product</th>
+					  <th class="product-price">Price</th>
+					  <th class="product-price">Payment Method</th>
+					  <th class="product-quantity">Quantity</th>
+					  <th class="product-total">Total</th>
+					  <th class="product-total">Status</th>
+					  <!-- <th class="product-save">Save</th> -->
+					  <!-- <th class="product-remove">Remove</th> -->
+					</tr>
+				  </thead>
+				  <tbody>
+					
+					{% for i in data reversed %}
+					<tr>
+					  <td class="product-thumbnail">
+						<div style="display: flex; align-items: center; gap: 10px;">
+							{% for j in i.orderitem.all %}
+
+							<img src="{{ j.product.image.url }}" width="100px" height="100px" alt="" class="">
+							{% endfor %}
+						</div>
+						
+					  </td> 
+					  <td class="product-name">
+						
+						{% for j in i.orderitem.all  %}
+						<div >
+							<h5 class="">{{j.product.name}}, </h5>
+						</div>
+						{% endfor %}
+							
+					  </td>
+					  <td>
+						
+						{% for j in i.orderitem.all  %}
+							$<span id="price">{{j.totalprice}},</span>
+						{% endfor %}
+							
+						
+					</td>
+					<td>
+						
+						{% if i.is_cod %}
+							<span>COD</span>
+							{% else %}
+							<span>RAZORPAY</span>
+						{% endif %}
+							
+					</td>
+					  <td>
+						  <div class="input-group mb-3 d-flex align-items-center quantity-container" style="max-width: 120px; margin-left: 100px;">
+							<div class="input-group-prepend">
+							  <!-- <button class="btn btn-outline-black "  onclick="decreaseValue()" type="button">&minus;</button> -->
+							  <!-- <a href="{% url 'decreasequantity' i.id %}" class="btn btn-outline-black">&minus;</a> -->
+						  
+							</div>
+							{% for j in i.orderitem.all  %}
+							<input type="text" id="numberInput"  class="form-control text-center quantity-amount" value="{{j.quantity}}" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1" readonly style="margin-left: 10px;">
+							{% endfor %}
+							
+							<div class="input-group-append">
+							  <!-- <button class="btn btn-outline-black" onclick="increaseValue()" type="button">&plus;</button> -->
+							  <!-- <a href="{% url 'increasequantity' i.id %}" class="btn btn-outline-black">&plus;</a> -->
+							</div>
+						  </div>
+						  
+						
+					  </td>
+					  <td>$
+						<span id="price">{{i.grand_total}} </span>
+						
+					  </td>
+
+					  
+					  {% if i.is_cancelled %}
+					  <td>
+						<p class="text-danger">Cancelled</p>
+					  </td>
+
+					  {% else %}
+						
+					  
+						
+
+					  <td>
+						<a href="{% url 'cancel_order' i.id %}" class="btn btn-danger" style="text-decoration: none;">cancel</a>
+					  </td>
+
+
+
+					  {% endif %}
+					  
+
+					</tr>
+					{% endfor %}
+					  
+				  </tbody>
+				</table>
+			  </div>
+			</form>
+		  </div>
+	
+		  <div class="row">
+			<div class="col-md-6">
+			  <div class="row mb-5">
+				<!-- <div class="col-md-6 mb-3 mb-md-0">
+				  <button class="btn btn-black btn-sm btn-block">Update Cart</button>
+				</div>
+				<div class="col-md-6">
+				  <button class="btn btn-outline-black btn-sm btn-block">Continue Shopping</button>
+				</div> -->
+			  </div>
+			  <div class="row">
+				<!-- <div class="col-md-12">
+				  <label class="text-black h4" for="coupon">Coupon</label>
+				  <p>Enter your coupon code if you have one.</p>
+				</div>
+				<div class="col-md-8 mb-3 mb-md-0">
+				  <input type="text" class="form-control py-3" id="coupon" placeholder="Coupon Code">
+				</div>
+				<div class="col-md-4">
+				  <button class="btn btn-black">Apply Coupon</button>
+				</div> -->
+			  </div>
+			</div>
+
+
+			<!-- <div class="col-md-6 pl-5">
+			  <div class="row justify-content-end">
+				<div class="col-md-7">
+				  <div class="row">
+					<div class="col-md-12 text-right border-bottom mb-5">
+					  <h3 class="text-black h4 text-uppercase">Cart Totals</h3>
+					</div>
+				  </div>
+
+				  {% for i in data %}
+					
+				  <div class="row mb-3">
+					<div class="col-md-6">
+					  <span class="text-black">{{i.product.name}}</span>
+					</div>
+					<div class="col-md-6 text-right">
+					  <strong class="text-black">{{i.product.price}} (for one piece)</strong>
+					</div>
+				  </div>
+
+				  {% endfor %}
+
+				  <div class="row mb-3">
+					<div class="col-md-6">
+					  <span class="text-black">Subtotal</span>
+					</div>
+					<div class="col-md-6 text-right">
+					  <strong class="text-black">${{total}}</strong>
+					</div>
+				  </div>
+
+
+				  <div class="row mb-5">
+					<div class="col-md-6">
+					  <span class="text-black">shipping</span>
+					</div>
+					<div class="col-md-6 text-right">
+					  <strong class="text-black">$50.00</strong>
+					</div>
+				  </div>
+
+				  <div class="row mb-5">
+					<div class="col-md-6">
+					  <span class="text-black">Total</span>
+					</div>
+					<div class="col-md-6 text-right">
+					  <strong class="text-black">{{Total}}</strong>
+					</div>
+				  </div>
+	
+				  
+				</div> -->
+			  </div>
+			</div>
+		  </div>
+		</div>
+	  </div>  
+	
+
+		
+		<script>
+			let home = document.getElementById('home')
+			let shop = document.getElementById('order')
+
+			home.classList.remove('active')
+			shop.classList.add('active')
+		</script>
+{% endblock %}

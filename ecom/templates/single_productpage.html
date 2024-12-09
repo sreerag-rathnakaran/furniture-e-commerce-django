@@ -1,0 +1,385 @@
+
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<style>
+    /* style.css */
+/* 
+* {
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+}
+
+body {
+min-height: 50vh;
+display: flex;
+align-items: center;
+text-align: center;
+justify-content: center;
+background: hsl(137, 46%, 24%);
+font-family: "Poppins", sans-serif;
+} */
+
+.cardstar {
+max-width: 33rem;
+background: #fff;
+margin: 0 ;
+padding: 1rem;
+box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+width: 100%;
+border-radius: 0.5rem;
+}
+
+.star {
+font-size: 3vh;
+
+
+cursor: pointer;
+}
+
+.one {
+color: rgb(255, 0, 0);
+}
+
+.two {
+color: rgb(255, 106, 0);
+}
+
+.three {
+color: rgb(251, 255, 120);
+}
+
+.four {
+color: rgb(255, 255, 0);
+}
+
+.five {
+color: rgb(24, 159, 14);
+}
+
+body {
+    background-color: #f7f6f6
+}
+
+.card {
+    
+    border: none;
+    box-shadow: 5px 6px 6px 2px #e9ecef;
+    border-radius: 4px;
+}
+
+
+.dots{
+
+    height: 4px;
+  width: 4px;
+  margin-bottom: 2px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.badge{
+
+        padding: 7px;
+        padding-right: 9px;
+    padding-left: 16px;
+    box-shadow: 5px 6px 6px 2px #e9ecef;
+}
+
+.user-img{
+
+    margin-top: 4px;
+}
+
+.check-icon{
+
+    font-size: 17px;
+    color: #c3bfbf;
+    top: 1px;
+    position: relative;
+    margin-left: 3px;
+}
+
+.form-check-input{
+    margin-top: 6px;
+    margin-left: -24px !important;
+    cursor: pointer;
+}
+
+
+.form-check-input:focus{
+    box-shadow: none;
+}
+
+
+.icons i{
+
+    margin-left: 8px;
+}
+.reply{
+
+    margin-left: 12px;
+}
+
+.reply small{
+
+    color: #b7b4b4;
+
+}
+
+
+.reply small:hover{
+
+    color: green;
+    cursor: pointer;
+
+}
+</style>
+
+<div class="product-page" >
+    <!-- Product Image Lightbox -->
+    <div class="image-section">
+        <div class="main-image-container">
+            <img src="{{data.image.url}}" alt="Luxurious Sofa" id="" class="lightbox-trigger" style="width: 500px; margin-left: 60px;">
+        </div>
+        <div class="thumbnail-gallery">
+            <img src="" alt="" onclick="setMainImage('sofa-1.jpg')">
+            <img src="" alt="" onclick="setMainImage('sofa-2.jpg')">
+            <img src="" alt="" onclick="setMainImage('sofa-3.jpg')">
+        </div>
+    </div>
+
+    <!-- Lightbox Modal for Image Zoom -->
+    <div id="lightbox-modal" class="lightbox-modal">
+        <span class="close-lightbox">&times;</span>
+        <img class="lightbox-content" id="lightbox-image">
+    </div>
+
+    <!-- Product Details Sidebar with Sticky Behavior -->
+    <aside class="product-info-sidebar" >
+        <h1>{{data.name}}</h1>
+        <!-- <div class="rating">★★★★★</div> -->
+        <p class="price">{{data.sale_price}}<span class="discount">{{data.price}}</span></p>
+        <p class="short-desc">{{data.description}}</p>
+
+        <!-- Product Options with Custom Styling -->
+        <div class="product-options">
+
+            <div class="color-selection">
+                <label>Choose Color:</label>
+                <div class="color-options">
+                    <div class="color-icon" data-color="Sand Beige" style="background-color: #d2b48c;" onclick="selectColor('Sand Beige')"></div>
+                    <div class="color-icon" data-color="Charcoal Black" style="background-color: #333;" onclick="selectColor('Charcoal Black')"></div>
+                    <div class="color-icon" data-color="Ocean Blue" style="background-color: #0077be;" onclick="selectColor('Ocean Blue')"></div>
+                </div>
+                <p id="selected-color">Selected Color: Sand Beige</p>
+            </div>
+
+            <!-- <div class="option">
+                <label>Material:</label>
+                <select>
+                    <option>Velvet</option>
+                    <option>Leather</option>
+                    <option>Fabric</option>
+                </select>
+            </div> -->
+        </div>
+
+    
+            <!-- Action Buttons -->
+            <!-- <button class="btn-add-to-cart" >Add to Cart</button> -->
+            <div class="action-button">
+            <a href="{% url 'add_to_cart' data.id %}" class="btn-add-to-cart btn " style="text-decoration: none;">Add to Cart</a>
+           
+            <a href="{% url 'Proceed_to_checkout' data.id %}" class="btn-buy-now btn"     style="text-decoration: none;">Buy Now</a>
+            <!-- <button class="btn-buy-now">Buy Now</button> -->
+            </div>
+
+        <div class="additional-info">
+            <p>Free Shipping on orders over $1000.</p>
+            <p>Estimated Delivery: <strong>Nov 10 - Nov 18</strong></p>
+        </div>
+    </aside>
+
+
+    <!-- Product Tabs for Details, Specs, and Reviews -->
+   
+</div>
+<section class="product-details">
+    <div class="tab-buttons">
+        <button onclick="showTab('details')" class="active">Details</button>
+        <button onclick="showTab('specs')">Recent Reviews</button>
+        <button onclick="showTab('reviews')">Add Reviews</button>
+    </div>
+
+    <div id="details" class="tab-content active">
+        <p>The Luxura Sofa is crafted with premium materials, ensuring both comfort and elegance for your living space. Its timeless design complements any modern interior.</p>
+    </div>
+
+    <div id="specs" class="tab-content">
+
+
+
+
+        <div class="container mt-5">
+
+            <div class="row  d-flex justify-content-center">
+
+                <div class="col-md-8">
+
+                    <div class="headings d-flex justify-content-between align-items-center mb-3">
+                        <!-- <h5>Unread comments(6)</h5> -->
+
+                        <div class="buttons">
+
+                            <!-- <span class="badge bg-white d-flex flex-row align-items-center">
+                                <span class="text-primary">Comments "ON"</span>
+                                <div class="form-check form-switch">
+                                  <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" checked>
+                                  
+                                </div>
+                            </span> -->
+                            
+                        </div>
+                        
+                    </div>
+
+
+                    {% for i in cmnt %}
+                        <div class="card p-3 mt-2">
+
+                            <div class="d-flex justify-content-between align-items-center">
+
+                        <div class="user  flex-row align-items-center" style="display: flex; gap: 10px;">
+
+                            <img src="{{i.user.Image.url}}" width="30" class="user-img rounded-circle mr-2" style="width: 40px; height: 40px;"><br>
+                            <span style="display: flex; flex-direction: column;"><h5 class="font-weight-bold text-primary">{{i.user.Name}}</h5>
+                                <small class="font-weight-bold">''{{i.review}}'' </small></span>
+                            
+                        </div>
+
+
+                        <small>{{i.created_at}}</small>
+
+                        </div>
+
+
+                        <div class="action d-flex justify-content-between mt-2 align-items-center">
+
+                            <div class="reply px-4">
+                                <small>Remove</small>
+                                <span class="dots"></span>
+                                <small>Reply</small>
+                                <span class="dots"></span>
+                                <small>Translate</small>
+                            
+                            </div>
+
+                            <div class="icons align-items-center">
+                                <i class="fa fa-check-circle-o check-icon text-primary"></i>
+                                
+                            </div>
+                            
+                        </div>
+
+
+                            
+                        </div>
+                    {% endfor %}
+
+
+
+                    
+                </div>
+                
+            </div>
+            
+        </div>
+            
+        
+    </div>
+    
+    <form action="{% url 'add_review' %}" method="post">
+        {% csrf_token %}
+        <div id="reviews" class="tab-content">
+            <div class="review">
+                <div class="review-info">
+                    <div class="cardstar" >
+                        <h4>Rate product</h4>
+                        <br>
+                        <span onclick="gfg(1)"
+                            class="star">★
+                        </span>
+                        <span onclick="gfg(2)"
+                            class="star">★
+                        </span>
+                        <span onclick="gfg(3)"
+                            class="star">★
+                        </span>
+                        <span onclick="gfg(4)"
+                            class="star">★
+                        </span>
+                        <span onclick="gfg(5)"
+                            class="star">★
+                        </span>
+                        <h5 id="output">
+                            Rating is: 0/5
+                        </h5>
+                        <input type="text" name="rating" id="ratinput" hidden>
+                        <input type="text" name="product" id="" value="{{ data.id }}" hidden>
+                    </div>
+                    <label for="">Add review</label>
+                    <textarea  id="" style="width: 495px; border: 1px solid;" name="content"></textarea>
+                    <button type="submit" class="btn btn-primary" style="margin-top: 100px;margin-left:0px;">Post</button>
+                    <br>
+                    <br>
+                    <!-- <strong>Alice</strong> <span>★★★★☆</span> <small>Oct 20, 2023</small> -->
+                </div>
+                <!-- <p>"Beautiful sofa, high quality and very comfortable!"</p> -->
+            </div>
+        </div>
+    </form>
+</section>
+
+<script>
+    // script.js
+
+// To access the stars
+let stars = 
+	document.getElementsByClassName("star");
+let output = 
+	document.getElementById("output");
+
+// Funtion to update rating
+function gfg(n) {
+    const inp = document.getElementById('ratinput')
+	remove();
+	for (let i = 0; i < n; i++) {
+		if (n == 1) cls = "one";
+		else if (n == 2) cls = "two";
+		else if (n == 3) cls = "three";
+		else if (n == 4) cls = "four";
+		else if (n == 5) cls = "five";
+		stars[i].className = "star " + cls;
+	}
+	output.innerText = "Rating is: " + n + "/5";
+    inp.value = n
+}
+
+// To remove the pre-applied styling
+function remove() {
+	let i = 0;
+	while (i < 5) {
+		stars[i].className = "star";
+		i++;
+	}
+}
+
+</script>
+
+{% endblock %}
+		

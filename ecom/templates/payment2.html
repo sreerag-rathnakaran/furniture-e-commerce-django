@@ -1,0 +1,236 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block content %}
+
+
+
+
+
+<style>
+
+body{
+	background-color: #ffffff;
+
+}
+.container1212{
+	width: auto;
+	background-color: #fff;
+	padding-top: 100px;
+    padding-bottom: 100px;
+
+}
+.card{
+	background-color: #fff;
+	width: 800px;
+	border-radius: 15px;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.name{
+	font-size: 15px;
+	color: #403f3f;
+	font-weight: bold;
+}
+.cross{
+	font-size: 11px;
+	color: #b0aeb7;
+}
+.pin{
+	font-size: 14px;
+	color: #b0aeb7;
+}
+.first{
+	border-radius: 8px;
+	border: 1.5px solid #1a7764;
+	color: #000;
+	background-color: white;
+}
+.second{
+	border-radius: 8px;
+	border: 1px solid #acacb0;
+	color: #000;
+	background-color: #fff;
+}
+
+.head{
+	color: #1a7764;;
+	font-size: 12px;
+}
+.dollar{
+	font-size: 18px;
+	color: #1a7764;;
+}
+.amount{
+	color: #1a7764;;
+	font-weight: bold;
+	font-size: 18px;
+
+}
+.form-control{
+	font-size: 18px;
+	font-weight: bold;
+	width: 60px;
+	height: 28px;
+
+}
+.back{
+	color: #aba4a4;
+	font-size: 15px;
+	line-height: 73px;
+	font-weight: 400;
+}
+.button{
+	width: 150px;
+	height: 60px;
+	border-radius: 8px;
+	font-size: 17px;		
+}
+</style>
+
+<div class="container1212 d-flex justify-content-center mt-5">
+	<div class="card">
+		
+
+
+		<div>
+			<div class="d-flex pt-3 pl-3">
+			
+			
+		    </div>
+
+
+		    <div class="py-2  px-3">
+		    	<div class="first pl-2 d-flex py-2 px-3">
+			    <div class="form-check">
+				
+			    </div>
+			    <div class="border-left pl-2"><span class="head">Total amount due</span><div><span class="dollar">$</span><span class="amount">{{ order.grand_total }}</span></div></div>
+
+		        </div>
+		    </div>
+
+
+		    <div class="py-2  px-3">
+		    	<div class="first pl-2 d-flex py-2 px-3" style="display: flex; align-items: center; gap: 10px;">
+			    <div class="form-check">
+				<input type="radio" id="razorpay" name="optradio" class="form-check-input  dot" checked>
+			    </div>
+                <div>
+                    <img width="100px" height="100px" src="{% static 'assets1/images/razorpay2.png' %}" alt="">
+                </div>
+                
+		        </div>
+		    </div>
+		  
+		    <div class="py-2  px-3">
+		    	<div class="first pl-2 d-flex py-2 px-3" style="display: flex; align-items: center; gap: 10px;">
+			    <div class="form-check">
+				<input type="radio" id="cod"  name="optradio" class="form-check-input  dot" checked>
+			    </div>
+                <div>
+                   <img width="120px" height="100px" src="{% static 'assets1/images/cod1.avif' %}" alt="">
+                </div>
+                
+		        </div>
+		    </div>
+
+
+		    	<div class="d-flex justify-content-between px-3 pt-4 pb-3">
+		    		<div><span class="back">Go back</span></div>
+		    		<button type="button" class="btn btn-primary button" onclick="handleClick('{{ order.id }}')">Pay</button>
+		    	</div>
+
+
+
+		</div>
+	</div>
+
+</div>
+
+
+
+
+
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
+
+<script>
+    async function startPayment(appointmentId){
+        try{
+
+            const apiResponse = await fetch(`http://127.0.0.1:8000/create-payment/${Number(appointmentId)}/`)
+            const data = await apiResponse.json()
+
+            if(!data.success){
+                alert('Error Occured')
+                return
+            }
+
+            const options = {
+                'key': data.key,
+                'amount': data.amount,
+                'currency': 'INR',
+                'name':'appointment payment',
+                'description': 'appointment payment',
+                'order_id': data.order_id,
+                'handler': async (response) =>{
+                    try{
+
+                        const verificationResponse = await fetch(`http://127.0.0.1:8000/verify-payment/`, {
+                            method: 'POST',
+                            headers:{
+                                'Content-Type': 'application/json',
+                            },
+                            body: JSON.stringify({
+                                order_id: appointmentId,
+                                razorpay_payment_id: response.razorpay_payment_id,
+                                razorpay_order_id: response.razorpay_order_id,
+                                razorpay_signature: response.razorpay_signature,
+                            })
+                        })
+
+                        const ressult = await verificationResponse.json()
+                        if(ressult.success){
+                            alert(ressult.message)
+                            window.open('http://127.0.0.1:8000/order', '_self')
+                        }
+                        else{
+                            alert(ressult.message)
+                        }
+
+                    }catch(error){
+                        console.error(error)
+                    }
+                },
+                'theme':{
+                    'color': '#3399cc'
+                },
+            };
+
+            const rzp = new Razorpay(options)
+            rzp.open()
+
+        }catch(error){
+            console.log(error)
+        }
+    }
+
+	function codPay(id){
+		window.open(`http://127.0.0.1:8000/cod/${id}`, '_self')
+	}
+
+	function handleClick(id){
+		const razorpay = document.getElementById('razorpay')
+		const cod = document.getElementById('cod')
+	
+		if(razorpay.checked){
+			startPayment(id)
+		}else{
+			codPay(id)
+		}
+	}
+</script>
+
+
+{% endblock %}
